@@ -15,6 +15,7 @@ minima:
 header_pages:
   - archives.md
   - lobster-diary.md
+  - lobster-skills.md
   - skills.md
   - about.md
 
