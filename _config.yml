@@ -13,6 +13,8 @@ minima:
 
 # 导航菜单
 header_pages:
+  - archives.md
+  - skills.md
   - about.md
 
 # 构建设置
