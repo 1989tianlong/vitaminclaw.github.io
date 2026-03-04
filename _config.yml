@@ -14,6 +14,7 @@ minima:
 # 导航菜单
 header_pages:
   - archives.md
+  - lobster-diary.md
   - skills.md
   - about.md
 
