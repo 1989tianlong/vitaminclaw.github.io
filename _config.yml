@@ -25,6 +25,9 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+# URL 结构（避免中文分类导致的 URL 编码问题）
+permalink: /:year/:month/:day/:title.html
+
 # 时区
 timezone: Asia/Shanghai
 
