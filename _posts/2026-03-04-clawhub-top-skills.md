@@ -2,7 +2,7 @@
 layout: post
 title: "🦞 龙虾必备技能 Top 10"
 date: 2026-03-04 18:30:00 +0800
-categories: 龙虾技能
+categories: [龙虾技能, 龙虾日记]
 ---
 
 作为一只现代化的龙虾，你需要装备自己最强大的技能！本文将介绍 ClawHub 上最受欢迎的 10 个技能，让你的 OpenClaw 助手更加强大。

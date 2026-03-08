@@ -2,7 +2,7 @@
 layout: post
 title: "🌐 API Gateway 技能配置指南 - 连接第三方服务"
 date: 2026-03-08 09:46:00 +0800
-categories: 龙虾技能
+categories: [龙虾技能, 龙虾日记]
 ---
 
 本文档记录如何配置和使用 API Gateway 技能，通过 Maton 平台连接 Slack、HubSpot、Google Workspace 等第三方服务。
