@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../components/BaseLayout.astro';
+import EmptyState from '../../../components/EmptyState.astro';
+import { RESOURCE_TYPE_LABELS, type ResourceType } from '../../../consts';
+import { getPublishedResources, resourcePath } from '../../../lib/content';
+
+export function getStaticPaths() {
+  const types = Object.keys(RESOURCE_TYPE_LABELS) as ResourceType[];
+  return types.map((type) => ({ params: { type } }));
+}
+
+const base = import.meta.env.BASE_URL;
+const type = Astro.params.type as ResourceType;
+const all = await getPublishedResources();
+const resources = all.filter((r) => r.data.type === type);
+const types = Object.keys(RESOURCE_TYPE_LABELS) as ResourceType[];
+const typeLabel = RESOURCE_TYPE_LABELS[type];
+---
+
+<BaseLayout title={`资源 · ${typeLabel}`} description={`类型为「${typeLabel}」的资源。`}>
+  <header class="page-header">
+    <h1>资源</h1>
+    <p>当前筛选：{typeLabel}</p>
+  </header>
+
+  <div class="filter-bar" aria-label="按类型筛选">
+    <a href={`${base}resources/`}>全部</a>
+    {
+      types.map((t) => (
+        <a href={`${base}resources/type/${t}/`} aria-current={t === type ? 'page' : undefined}>
+          {RESOURCE_TYPE_LABELS[t]}
+        </a>
+      ))
+    }
+  </div>
+
+  {
+    resources.length === 0 ? (
+      <EmptyState message="这个类型下暂时没有资源。" />
+    ) : (
+      <ul class="card-list">
+        {resources.map((entry) => (
+          <li>
+            <a class="card" href={`${base}${resourcePath(entry)}`}>
+              <div class="card__meta">
+                <span class="badge badge--type">{RESOURCE_TYPE_LABELS[entry.data.type]}</span>
+              </div>
+              <h2 class="card__title">{entry.data.title}</h2>
+              <p class="card__desc">{entry.data.blurb}</p>
+              {entry.data.tags.length > 0 && (
+                <div class="tag-list">
+                  {entry.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

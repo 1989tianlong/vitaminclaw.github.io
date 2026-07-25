@@ -1,0 +1,44 @@
+---
+import AuthorshipBadge from '../../components/AuthorshipBadge.astro';
+import BaseLayout from '../../components/BaseLayout.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import { diaryPath, formatDate, getPublishedDiary } from '../../lib/content';
+
+const base = import.meta.env.BASE_URL;
+const diary = await getPublishedDiary();
+---
+
+<BaseLayout title="AI 日记" description="VitaminClaw 的 AI 实践日记。">
+  <header class="page-header">
+    <h1>AI 日记</h1>
+    <p>过程向笔记。每篇会标明署名：我写的 / AI 生成 / 人机协作。</p>
+  </header>
+
+  {
+    diary.length === 0 ? (
+      <EmptyState message="还没有日记。复制 src/content/diary 下的模板新建一篇即可。" />
+    ) : (
+      <ul class="card-list">
+        {diary.map((entry) => (
+          <li>
+            <a class="card" href={`${base}${diaryPath(entry)}`}>
+              <div class="card__meta">
+                <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+                <AuthorshipBadge authorship={entry.data.authorship} />
+              </div>
+              <h2 class="card__title">{entry.data.title}</h2>
+              {entry.data.description && <p class="card__desc">{entry.data.description}</p>}
+              {entry.data.tags.length > 0 && (
+                <div class="tag-list">
+                  {entry.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

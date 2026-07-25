@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { SITE_TAGLINE, SITE_TITLE } from '../consts';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="关于" description={`${SITE_TITLE}：${SITE_TAGLINE}`}>
+  <header class="page-header">
+    <h1>关于</h1>
+    <p>{SITE_TITLE} 是一个可公开分享的个人站。</p>
+  </header>
+
+  <article class="prose">
+    <p>
+      这里用三块结构记录与 AI 相关的公开内容：
+    </p>
+    <ul>
+      <li><strong>AI 日记</strong> — 过程向的实践笔记；每篇标明「我写的 / AI 生成 / 人机协作」。</li>
+      <li><strong>产品</strong> — 可指名的稳定作品（简介、状态、链接），不是单次实验记录。</li>
+      <li><strong>资源</strong> — 扁平收藏：类型、标签与一句话评价。</li>
+    </ul>
+    <p>
+      站点基于 GitHub Pages 与 Astro 静态构建，内容即仓库里的 Markdown。欢迎通过
+      <a href="https://github.com/1989tianlong">GitHub @1989tianlong</a> 找到我。
+    </p>
+    <p>
+      <a href={`${base}diary/`}>看日记</a>
+      ·
+      <a href={`${base}products/`}>看产品</a>
+      ·
+      <a href={`${base}resources/`}>看资源</a>
+    </p>
+  </article>
+</BaseLayout>

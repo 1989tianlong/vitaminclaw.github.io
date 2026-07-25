@@ -1,0 +1,48 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+import { RESOURCE_TYPE_LABELS } from '../../consts';
+import { getPublishedResources } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const resources = await getPublishedResources();
+  return resources.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.blurb}>
+  <article>
+    <header class="page-header">
+      <h1>{entry.data.title}</h1>
+      <div class="entry-meta">
+        <span class="badge badge--type">{RESOURCE_TYPE_LABELS[entry.data.type]}</span>
+        {
+          entry.data.url && (
+            <a href={entry.data.url} rel="noopener noreferrer">
+              打开链接 ↗
+            </a>
+          )
+        }
+      </div>
+      <p>{entry.data.blurb}</p>
+      {
+        entry.data.tags.length > 0 && (
+          <div class="tag-list">
+            {entry.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

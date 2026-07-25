@@ -1,0 +1,12 @@
+---
+import { AUTHORSHIP_LABELS, type Authorship } from '../consts';
+
+interface Props {
+  authorship: Authorship;
+}
+
+const { authorship } = Astro.props;
+const label = AUTHORSHIP_LABELS[authorship];
+---
+
+<span class={`badge badge--${authorship}`}>{label}</span>

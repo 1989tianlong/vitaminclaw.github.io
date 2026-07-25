@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import { RESOURCE_TYPE_LABELS, type ResourceType } from '../../consts';
+import { getPublishedResources, resourcePath } from '../../lib/content';
+
+const base = import.meta.env.BASE_URL;
+const resources = await getPublishedResources();
+const types = Object.keys(RESOURCE_TYPE_LABELS) as ResourceType[];
+---
+
+<BaseLayout title="资源" description="VitaminClaw 的公开资源库。">
+  <header class="page-header">
+    <h1>资源</h1>
+    <p>扁平收藏：类型、标签与一句话评价。不是产品，也不是日记。</p>
+  </header>
+
+  <div class="filter-bar" aria-label="按类型筛选">
+    <a href={`${base}resources/`} aria-current="page">全部</a>
+    {
+      types.map((type) => (
+        <a href={`${base}resources/type/${type}/`}>{RESOURCE_TYPE_LABELS[type]}</a>
+      ))
+    }
+  </div>
+
+  {
+    resources.length === 0 ? (
+      <EmptyState message="还在搬进来。在 src/content/resources/ 添加 Markdown 即可。" />
+    ) : (
+      <ul class="card-list">
+        {resources.map((entry) => (
+          <li>
+            <a class="card" href={`${base}${resourcePath(entry)}`}>
+              <div class="card__meta">
+                <span class="badge badge--type">{RESOURCE_TYPE_LABELS[entry.data.type]}</span>
+              </div>
+              <h2 class="card__title">{entry.data.title}</h2>
+              <p class="card__desc">{entry.data.blurb}</p>
+              {entry.data.tags.length > 0 && (
+                <div class="tag-list">
+                  {entry.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
