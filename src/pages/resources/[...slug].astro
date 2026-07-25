@@ -2,7 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../components/BaseLayout.astro';
 import { RESOURCE_TYPE_LABELS } from '../../consts';
-import { getPublishedResources } from '../../lib/content';
+import { getPublishedResources, formatDate } from '../../lib/content';
 
 export async function getStaticPaths() {
   const resources = await getPublishedResources();
@@ -22,10 +22,18 @@ const { Content } = await render(entry);
       <h1>{entry.data.title}</h1>
       <div class="entry-meta">
         <span class="badge badge--type">{RESOURCE_TYPE_LABELS[entry.data.type]}</span>
+        {entry.data.date && <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>}
         {
           entry.data.url && (
             <a href={entry.data.url} rel="noopener noreferrer">
               打开链接 ↗
+            </a>
+          )
+        }
+        {
+          entry.data.repo && (
+            <a href={entry.data.repo} rel="noopener noreferrer">
+              仓库 ↗
             </a>
           )
         }

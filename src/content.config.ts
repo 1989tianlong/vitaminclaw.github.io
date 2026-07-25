@@ -36,6 +36,8 @@ const resources = defineCollection({
   schema: z.object({
     title: z.string(),
     url: z.string().url().optional(),
+    repo: z.string().url().optional(),
+    date: z.coerce.date().optional(),
     type: z.enum(['tool', 'article', 'repo', 'prompt', 'docs', 'other']),
     tags: z.array(z.string()).default([]),
     blurb: z.string(),

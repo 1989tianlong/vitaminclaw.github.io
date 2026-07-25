@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sync:diary": "node scripts/sync-diary.mjs"
+    "sync:diary": "node scripts/sync-diary.mjs",
+    "extract:resources": "node scripts/extract-resources.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

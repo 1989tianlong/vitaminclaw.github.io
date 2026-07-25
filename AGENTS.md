@@ -28,3 +28,9 @@ Full Astro docs: https://docs.astro.build
 - Products: `src/content/products/`
 - Resources: `src/content/resources/`
 - Schemas: `src/content.config.ts`
+
+### Pipelines
+
+- `npm run sync:diary` — sync diary explorations from `~/Documents/MinMetaSeek/25-日记探索` into `src/content/diary/` (`scripts/sync-diary.mjs`).
+- `npm run extract:resources` — extract ⭐≥4 linked tools from diary explorations into `src/content/resources/` (`scripts/extract-resources.mjs`).
+- `scripts/diary-daily.sh` runs both, then builds/commits/pushes/deploys; scheduled daily 23:07 via launchd (`com.vitaminclaw.diary-sync`), log at `/tmp/vitaminclaw-diary-sync.log`.

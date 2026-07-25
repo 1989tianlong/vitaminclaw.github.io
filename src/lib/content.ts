@@ -12,7 +12,11 @@ export async function getPublishedProducts() {
 
 export async function getPublishedResources() {
   const entries = await getCollection('resources', ({ data }) => !data.draft);
-  return entries.sort((a, b) => a.data.title.localeCompare(b.data.title, 'zh-CN'));
+  return entries.sort(
+    (a, b) =>
+      (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0) ||
+      a.data.title.localeCompare(b.data.title, 'zh-CN')
+  );
 }
 
 export function diaryPath(entry: CollectionEntry<'diary'>) {
