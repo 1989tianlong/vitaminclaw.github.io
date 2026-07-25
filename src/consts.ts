@@ -24,6 +24,7 @@ export const RESOURCE_TYPE_LABELS = {
   article: '文章',
   repo: '仓库',
   prompt: '提示词',
+  docs: '文档',
   other: '其他',
 } as const;
 

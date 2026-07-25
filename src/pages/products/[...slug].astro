@@ -24,7 +24,8 @@ const links = [
 
 <BaseLayout title={entry.data.title} description={entry.data.summary}>
   <article>
-    <header class="page-header">
+    <header class="page-header reveal">
+      <span class="eyebrow">Work</span>
       <h1>{entry.data.title}</h1>
       <div class="entry-meta">
         <span class="badge badge--status">{PRODUCT_STATUS_LABELS[entry.data.status]}</span>
@@ -49,8 +50,9 @@ const links = [
         <ul class="product-links">
           {links.map((link) => (
             <li>
-              <a href={link.href} rel="noopener noreferrer">
-                {link.label} ↗
+              <a class="btn-pill" href={link.href} rel="noopener noreferrer">
+                {link.label}
+                <span class="btn-pill__icon">↗</span>
               </a>
             </li>
           ))}

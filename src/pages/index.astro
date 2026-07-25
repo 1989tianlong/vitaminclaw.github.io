@@ -16,19 +16,61 @@ import {
 
 const base = import.meta.env.BASE_URL;
 const diary = (await getPublishedDiary()).slice(0, 5);
-const products = (await getPublishedProducts()).slice(0, 4);
+const products = await getPublishedProducts();
 const resources = (await getPublishedResources()).slice(0, 4);
 ---
 
 <BaseLayout description={SITE_DESCRIPTION}>
-  <section class="hero">
+  <section class="hero reveal">
+    <span class="eyebrow">AI Practice · Works · Notes</span>
     <h1>{SITE_TITLE}</h1>
     <p>{SITE_TAGLINE}。公开记录 AI 实践、可指名的作品，以及值得分享的资源。</p>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="section__head">
-      <h2>最新日记</h2>
+      <div>
+        <span class="eyebrow">Works</span>
+        <h2>产品</h2>
+      </div>
+      <a href={`${base}products/`}>全部产品 →</a>
+    </div>
+    {
+      products.length === 0 ? (
+        <EmptyState message="还在搬进来。产品是可指名的稳定作品，不是单次实验。" />
+      ) : (
+        <div class="bento">
+          {products.map((entry) => (
+            <a class="card card--bezel" href={`${base}${productPath(entry)}`}>
+              <div class="card__core">
+                {entry.data.cover && (
+                  <Image
+                    class="card__cover"
+                    src={entry.data.cover}
+                    alt={entry.data.title}
+                    widths={[400, 800, 1200]}
+                    sizes="(min-width: 720px) 54rem, 100vw"
+                  />
+                )}
+                <div class="card__meta">
+                  <span class="badge badge--status">{PRODUCT_STATUS_LABELS[entry.data.status]}</span>
+                </div>
+                <h3 class="card__title">{entry.data.title}</h3>
+                <p class="card__desc">{entry.data.summary}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </section>
+
+  <section class="section reveal">
+    <div class="section__head">
+      <div>
+        <span class="eyebrow">Notes</span>
+        <h2>最新日记</h2>
+      </div>
       <a href={`${base}diary/`}>全部日记 →</a>
     </div>
     {
@@ -53,42 +95,12 @@ const resources = (await getPublishedResources()).slice(0, 4);
     }
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="section__head">
-      <h2>产品</h2>
-      <a href={`${base}products/`}>全部产品 →</a>
-    </div>
-    {
-      products.length === 0 ? (
-        <EmptyState message="还在搬进来。产品是可指名的稳定作品，不是单次实验。" />
-      ) : (
-        <div class="grid-2">
-          {products.map((entry) => (
-            <a class="card" href={`${base}${productPath(entry)}`}>
-              {entry.data.cover && (
-                <Image
-                  class="card__cover"
-                  src={entry.data.cover}
-                  alt={entry.data.title}
-                  widths={[400, 800]}
-                  sizes="(min-width: 720px) 25rem, 100vw"
-                />
-              )}
-              <div class="card__meta">
-                <span class="badge badge--status">{PRODUCT_STATUS_LABELS[entry.data.status]}</span>
-              </div>
-              <h3 class="card__title">{entry.data.title}</h3>
-              <p class="card__desc">{entry.data.summary}</p>
-            </a>
-          ))}
-        </div>
-      )
-    }
-  </section>
-
-  <section class="section">
-    <div class="section__head">
-      <h2>资源</h2>
+      <div>
+        <span class="eyebrow">Links</span>
+        <h2>资源</h2>
+      </div>
       <a href={`${base}resources/`}>浏览资源库 →</a>
     </div>
     {

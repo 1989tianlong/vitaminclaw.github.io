@@ -10,7 +10,8 @@ const products = await getPublishedProducts();
 ---
 
 <BaseLayout title="产品" description="VitaminClaw 可指名的作品与项目。">
-  <header class="page-header">
+  <header class="page-header reveal">
+    <span class="eyebrow">Works</span>
     <h1>产品</h1>
     <p>可指名的稳定作品：简介、状态与链接。单次实验请写在日记里。</p>
   </header>
@@ -19,23 +20,25 @@ const products = await getPublishedProducts();
     products.length === 0 ? (
       <EmptyState message="还在搬进来。在 src/content/products/ 添加 Markdown 即可上架。" />
     ) : (
-      <div class="grid-2">
+      <div class="bento">
         {products.map((entry) => (
-          <a class="card" href={`${base}${productPath(entry)}`}>
-            {entry.data.cover && (
-              <Image
-                class="card__cover"
-                src={entry.data.cover}
-                alt={entry.data.title}
-                widths={[400, 800]}
-                sizes="(min-width: 720px) 25rem, 100vw"
-              />
-            )}
-            <div class="card__meta">
-              <span class="badge badge--status">{PRODUCT_STATUS_LABELS[entry.data.status]}</span>
+          <a class="card card--bezel reveal" href={`${base}${productPath(entry)}`}>
+            <div class="card__core">
+              {entry.data.cover && (
+                <Image
+                  class="card__cover"
+                  src={entry.data.cover}
+                  alt={entry.data.title}
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 720px) 54rem, 100vw"
+                />
+              )}
+              <div class="card__meta">
+                <span class="badge badge--status">{PRODUCT_STATUS_LABELS[entry.data.status]}</span>
+              </div>
+              <h2 class="card__title">{entry.data.title}</h2>
+              <p class="card__desc">{entry.data.summary}</p>
             </div>
-            <h2 class="card__title">{entry.data.title}</h2>
-            <p class="card__desc">{entry.data.summary}</p>
           </a>
         ))}
       </div>
