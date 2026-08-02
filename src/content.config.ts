@@ -26,6 +26,8 @@ const products = defineCollection({
       repo: z.string().url().optional(),
       docs: z.string().url().optional(),
       cover: image().optional(),
+      video: z.string().optional(),
+      gallery: z.array(image()).optional(),
       order: z.number().default(0),
       draft: z.boolean().default(false),
     }),

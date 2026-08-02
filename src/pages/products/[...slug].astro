@@ -60,8 +60,41 @@ const links = [
       )
     }
 
+    {
+      entry.data.video && (
+        <section class="product-media reveal">
+          <span class="eyebrow">Demo</span>
+          <h2 class="product-media__title">演示视频</h2>
+          <div class="product-video">
+            <video controls playsinline preload="metadata" src={entry.data.video} />
+          </div>
+        </section>
+      )
+    }
+
     <div class="prose">
       <Content />
     </div>
+
+    {
+      entry.data.gallery && entry.data.gallery.length > 0 && (
+        <section class="product-media reveal">
+          <span class="eyebrow">Promo</span>
+          <h2 class="product-media__title">宣传卡片</h2>
+          <div class="product-gallery">
+            {entry.data.gallery.map((img, i) => (
+              <div class="product-gallery__item">
+                <Image
+                  src={img}
+                  alt={`${entry.data.title} 宣传卡片 ${i + 1}`}
+                  widths={[400, 800]}
+                  sizes="(min-width: 720px) 22rem, 100vw"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
   </article>
 </BaseLayout>

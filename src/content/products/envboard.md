@@ -4,6 +4,11 @@ summary: macOS 原生工具：可视化管理 ~/.zshrc 环境变量，安全编�
 status: active
 repo: https://github.com/1989tianlong/EnvBoard
 cover: ../../assets/products/envboard.png
+video: /products/envboard/narration.mp4
+gallery:
+  - ../../assets/products/envboard-promo-01.png
+  - ../../assets/products/envboard-promo-02.png
+  - ../../assets/products/envboard-promo-03.png
 order: 90
 ---
 
