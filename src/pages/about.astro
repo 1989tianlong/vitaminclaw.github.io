@@ -9,29 +9,38 @@ const base = import.meta.env.BASE_URL;
   <header class="page-header reveal">
     <span class="eyebrow">About</span>
     <h1>关于</h1>
-    <p>{SITE_TITLE} 是一个可公开分享的个人站，主角是作品本身。</p>
+    <p>你好，我是 VitaminClaw。这里是我和 AI 一起干活的地方，全部公开。</p>
   </header>
 
   <article class="prose">
-    <p>站点分三块，按重要程度排序：</p>
+    <p>
+      这个站的内容就是仓库里的 Markdown，站点本身开源在 GitHub 上。
+      你看到的一切——内容、配图、部署——都有 AI 参与，它不是 AI 的展示橱窗，
+      而是一套真实在跑的协作流程。
+    </p>
     <ul>
       <li>
-        <strong>产品</strong> — 可指名的稳定作品：小芽记、静笃、一瞬·永恒、MBTI、王阳明心学、上下五千年、哲思人生、sati。
-        每个产品有简介、状态与线上地址，封面图全部由 Grok（xAI）的 image_gen 生成，
-        统一 teal 电影色调的编辑摄影风。
+        <strong>产品</strong> — 9 个真能用的东西：从哄娃的小芽记、正念的 sati，
+        到管理 <code>~/.zshrc</code> 的 macOS 原生工具 EnvBoard。
+        每个都有简介、状态和线上地址或源码仓库，欢迎试用、提 issue。
       </li>
       <li>
-        <strong>日记</strong> — 过程向的 AI 实践笔记，每篇标明「我写的 / AI 生成 / 人机协作」。
+        <strong>日记</strong> — 每天让 AI 对当天摸过的工具做第一性原理拆解，写下什么值得用、怎么用。
+        每篇都老实标明「我写的 / AI 生成 / 人机协作」。
       </li>
       <li>
-        <strong>资源</strong> — 常用 AI 开发文档与工具的扁平收藏：OpenAI、Anthropic、xAI、Google 等官方文档，
-        以及 OpenClaw、taste-skill 这类顺手工具，每条附一句话评价。
+        <strong>资源</strong> — 不是收藏夹，是筛过的：日记里评分 ⭐≥4 的工具会被自动抽出来，
+        附上核心价值和使用指南；另有 OpenAI、Anthropic、xAI 等常用官方文档。
       </li>
     </ul>
     <p>
-      站点用 Astro 静态构建、部署在 Vercel，内容就是仓库里的 Markdown。
-      整个站从内容、配图到部署都由 AI 协作完成——它本身就是一场公开的 AI 实践。
-      欢迎通过 <a href="https://github.com/1989tianlong">GitHub @1989tianlong</a> 找到我。
+      每晚 23:07，一个定时任务会自动同步日记、抽取资源、构建部署——我睡觉，它上班。
+      所以这里每天都在长。
+    </p>
+    <p>
+      源码在 <a href="https://github.com/1989tianlong/vitaminclaw.github.io">vitaminclaw.github.io</a>，
+      人是 <a href="https://github.com/1989tianlong">@1989tianlong</a>。
+      发现错误、想聊工具、或者只是路过，都欢迎来打个招呼。
     </p>
     <p>
       <a href={`${base}products/`}>看产品</a>
