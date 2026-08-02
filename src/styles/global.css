@@ -543,6 +543,37 @@ a.card--bezel:hover .card__cover {
   }
 }
 
+/* About page: wide hero + section cards */
+.about-hero {
+  display: block;
+  width: 100%;
+  max-width: var(--max-wide);
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius) + 6px);
+  box-shadow:
+    0 0 0 1px var(--hairline),
+    0 24px 50px -26px color-mix(in srgb, var(--text) 40%, transparent);
+  margin-bottom: 2.5rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin: 0 0 2.5rem;
+}
+
+.about-grid .card__cover {
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 719px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .card__meta {
   display: flex;
   flex-wrap: wrap;
