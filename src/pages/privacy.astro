@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { CONTACT_EMAIL } from '../consts';
+---
+
+<BaseLayout title="隐私政策" description="VitaminClaw 的隐私政策：静态站点，不收集个人信息。">
+  <header class="page-header reveal">
+    <span class="eyebrow">Privacy</span>
+    <h1>隐私政策</h1>
+    <p>简单说：这是一个静态网站，没有什么可收集的。以下是完整说明。</p>
+  </header>
+
+  <article class="prose">
+    <h2>本站不做什么</h2>
+    <ul>
+      <li>没有账号、评论、表单，不主动收集任何个人信息</li>
+      <li>不使用 Cookie，不放统计或广告跟踪脚本</li>
+      <li>不把任何数据卖给第三方——本来也没有数据</li>
+    </ul>
+
+    <h2>第三方服务</h2>
+    <ul>
+      <li><strong>托管</strong> — 站点部署在 Vercel，其服务器会记录常规的访问日志（IP、浏览器等），见 Vercel 自己的隐私政策</li>
+      <li><strong>字体</strong> — 页面字体来自 Google Fonts，加载时浏览器会向 Google 发起请求</li>
+      <li><strong>外链</strong> — 站内链接指向的产品、仓库和购买页面各有自己的隐私政策，离开本站后请以对方为准</li>
+    </ul>
+
+    <h2>联系</h2>
+    <p>
+      对本政策有任何疑问，发邮件到
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>。
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { CONTACT_EMAIL } from '../consts';
+---
+
+<BaseLayout title="广告合作" description="与 VitaminClaw 的合作方式：面向 vibe coding 与 AI 工具人群的赞助、测评与收录。">
+  <header class="page-header reveal">
+    <span class="eyebrow">Sponsor</span>
+    <h1>广告合作</h1>
+    <p>这个站的读者是做 vibe coding 的人：独立开发者、AI 工具的重度用户、喜欢自己动手做产品的人。</p>
+  </header>
+
+  <article class="prose">
+    <h2>适合的合作</h2>
+    <ul>
+      <li><strong>AI 工具与服务</strong> — 模型 API、Agent 平台、编程助手、效率工具</li>
+      <li><strong>开发者基础设施</strong> — VPS、云服务、域名、部署平台</li>
+      <li><strong>独立产品</strong> — 你自己做的小产品，只要真的有用</li>
+    </ul>
+
+    <h2>合作形式</h2>
+    <ul>
+      <li><strong>日记测评</strong> — 我会真的拿来用，按日常「日记探索」的形式写真实体验</li>
+      <li><strong>资源页收录</strong> — 通过测评后进入资源库，附核心价值与使用指南</li>
+      <li><strong>定制内容</strong> — 其他形式可以聊</li>
+    </ul>
+
+    <h2>两条原则</h2>
+    <p>
+      只接我自己会用、敢推荐给读者的产品；所有合作内容都会明确标注合作关系，不混在普通内容里。
+    </p>
+
+    <p>
+      有兴趣的话，发邮件到
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>，
+      简单介绍一下产品和想合作的形式，我会尽快回复。
+    </p>
+  </article>
+</BaseLayout>

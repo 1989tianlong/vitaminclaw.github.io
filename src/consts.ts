@@ -2,6 +2,7 @@ export const SITE_TITLE = 'VitaminClaw';
 export const SITE_TAGLINE = 'AI 日记 · 产品 · 资源';
 export const SITE_DESCRIPTION =
   'VitaminClaw 的个人公开站：记录 AI 实践、作品与可分享资源。';
+export const CONTACT_EMAIL = 'ytlhack@gmail.com';
 
 export const AUTHORSHIP_LABELS = {
   human: '我写的',
